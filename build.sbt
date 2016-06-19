@@ -15,6 +15,7 @@ libraryDependencies ++= Seq(
 
   "com.typesafe.akka" %% "akka-http-core" % akkaBaseV,
   "com.typesafe.akka" %% "akka-http-experimental" % akkaBaseV,
+  "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaBaseV,
 
   "ch.qos.logback" % "logback-core" % "1.1.5",
   "ch.qos.logback" % "logback-classic" % "1.1.5"
