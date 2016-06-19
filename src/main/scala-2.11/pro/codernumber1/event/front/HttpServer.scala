@@ -1,6 +1,6 @@
 package pro.codernumber1.event.front
 
-import akka.actor.ActorSystem
+import akka.actor.{ActorRef, ActorSystem}
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import akka.http.scaladsl.model.{ContentTypes, HttpEntity}
@@ -10,11 +10,16 @@ import akka.stream.ActorMaterializer
 import pro.codernumber1.event.model.Event
 
 import scala.io.StdIn
-
 import spray.json._
 import JsonProtocol._
 
-class HttpServer(actorSystem: ActorSystem, interface: String = "localhost", port: Int = 8080) extends SprayJsonSupport {
+class HttpServer(
+                  actorSystem: ActorSystem,
+                  counter: ActorRef,
+                  persister: ActorRef,
+                  interface: String = "localhost",
+                  port: Int = 8080
+                ) extends SprayJsonSupport {
   def run(): Unit = {
     implicit val system = actorSystem
     implicit val executionContext = system.dispatcher
@@ -28,6 +33,8 @@ class HttpServer(actorSystem: ActorSystem, interface: String = "localhost", port
           }
         } ~ post {
           entity(as[Event]) { event =>
+            counter ! event
+            persister ! event
             complete(HttpEntity(ContentTypes.`application/json`, event.toJson.prettyPrint))
           }
         }
