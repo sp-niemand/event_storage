@@ -70,9 +70,9 @@ class HttpServer(
       }
 
     val f = Http().bindAndHandle(Route.handlerFlow(route), interface, port)
-
-    println(s"Server online at http://localhost:8080/\nPress RETURN to stop...")
-    StdIn.readLine() // let it run until user presses return
-    f.flatMap(_.unbind())
+    f onComplete {
+      case _: Success[_] => log.info(s"Server online on interface $interface, port $port")
+      case Failure(t) => log.error(t, "HTTP server binding failed")
+    }
   }
 }
