@@ -1,4 +1,4 @@
-package pro.codernumber1.event.actor
+package pro.codernumber1.event.back
 
 import akka.actor.{Actor, ActorLogging}
 import pro.codernumber1.event.model.Event

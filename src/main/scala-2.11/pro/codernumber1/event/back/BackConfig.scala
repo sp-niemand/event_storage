@@ -1,8 +1,8 @@
 package pro.codernumber1.event.back
 
 import akka.actor.{ExtendedActorSystem, ExtensionKey}
-import pro.codernumber1.event.util.BaseConfig
 import net.ceedubs.ficus.Ficus._
+import pro.codernumber1.event.util.BaseConfig
 
 final class BackConfig(system: ExtendedActorSystem) extends BaseConfig(system) {
   override protected val prefix: String = "back"

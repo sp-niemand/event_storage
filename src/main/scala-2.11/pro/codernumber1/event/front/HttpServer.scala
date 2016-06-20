@@ -1,20 +1,18 @@
 package pro.codernumber1.event.front
 
 import akka.actor.{ActorRef, ActorSystem}
+import akka.event.Logging
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.{ExceptionHandler, Route, StandardRoute}
-import akka.stream.ActorMaterializer
-import pro.codernumber1.event.model.Event
 import akka.pattern.ask
-
-import scala.io.StdIn
+import akka.stream.ActorMaterializer
+import pro.codernumber1.event.back.EventCounter.{Counters, GetCounters}
+import pro.codernumber1.event.front.JsonProtocol._
+import pro.codernumber1.event.model.Event
 import spray.json._
-import JsonProtocol._
-import akka.event.Logging
-import pro.codernumber1.event.actor.EventCounter.{Counters, GetCounters}
 
 import scala.util.{Failure, Success}
 

@@ -1,7 +1,7 @@
 package pro.codernumber1.event
 
 import akka.actor.{ActorSystem, Props}
-import pro.codernumber1.event.actor.{EventCounter, EventPersister}
+import pro.codernumber1.event.back.{EventCounter, EventPersister}
 import pro.codernumber1.event.front.HttpServer
 
 object Main {

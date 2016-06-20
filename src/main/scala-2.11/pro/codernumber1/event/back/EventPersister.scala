@@ -1,4 +1,4 @@
-package pro.codernumber1.event.actor
+package pro.codernumber1.event.back
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -6,7 +6,6 @@ import java.time.format.DateTimeFormatter
 import akka.actor.{Actor, ActorLogging}
 import org.mongodb.scala.bson._
 import org.mongodb.scala.{MongoClient, MongoCollection, MongoDatabase}
-import pro.codernumber1.event.back.BackConfig
 import pro.codernumber1.event.model.Event
 import spray.json.DefaultJsonProtocol._
 
