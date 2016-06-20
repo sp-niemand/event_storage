@@ -4,6 +4,10 @@ version := "1.0"
 
 scalaVersion := "2.11.8"
 
+scalacOptions ++= Seq(
+  "-language:postfixOps"
+)
+
 val akkaStreamV = "2.0.3"
 val akkaBaseV   = "2.4.7"
 
@@ -19,5 +23,6 @@ libraryDependencies ++= Seq(
 
   "ch.qos.logback" % "logback-core" % "1.1.5",
   "ch.qos.logback" % "logback-classic" % "1.1.5",
-  "com.iheart" %% "ficus" % "1.2.3"
+  "com.iheart" %% "ficus" % "1.2.3",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "1.1.1"
 )
