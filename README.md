@@ -24,3 +24,9 @@ Event JSON format:
     "ts": 123454678 // timestamp
 }
 ```
+
+The easiest way to run MongoDB for this app is to use Docker:
+`docker run -p 54321:27017 -d mongo:2.6`
+I had some strange behavior with my dockerized MongoDB though. Maybe
+you'd prefer to just install Mongo. Don't forget to change the port
+in `application.conf` then. It's non-standard there.
